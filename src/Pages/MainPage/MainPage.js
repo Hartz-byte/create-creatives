@@ -40,14 +40,16 @@ const MainPage = () => {
 
   return (
     <>
-      <div className="mainContainer">
+      <main className="mainContainer">
         {/* filter by text */}
-        <h1>Filter By</h1>
+        <header>
+          <h1>Filter By</h1>
+        </header>
 
         {/* color and title/subtitle section */}
-        <div className="flexDisplay">
+        <section className="flexDisplay">
           {/* color section */}
-          <div>
+          <section>
             <h3>color</h3>
 
             <div className="colorDisplay">
@@ -59,10 +61,10 @@ const MainPage = () => {
                 />
               ))}
             </div>
-          </div>
+          </section>
 
           {/* title / subtitle section */}
-          <div>
+          <section>
             <h3>title / subtitle:</h3>
 
             <div>
@@ -72,11 +74,11 @@ const MainPage = () => {
                 className="inputField"
               />
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
 
         {/* process bar */}
-        <div className="processContainer">
+        <section className="processContainer">
           {/* bar */}
           <div className="processBarContainer">
             <div
@@ -91,14 +93,14 @@ const MainPage = () => {
           <div>
             <h3>{creatives.length} / 5 Creatives</h3>
           </div>
-        </div>
+        </section>
 
         {/* + add creative button  */}
         <div>
           <button
             className="addButton"
             onClick={toggleDrawer}
-            disabled={isDrawerOpen}
+            disabled={isDrawerOpen || creatives.length === 5}
           >
             + Add Creative
           </button>
@@ -124,7 +126,7 @@ const MainPage = () => {
             <h3>{creative.subtitle}</h3>
           </div>
         ))}
-      </div>
+      </main>
     </>
   );
 };

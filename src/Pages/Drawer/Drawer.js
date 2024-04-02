@@ -38,8 +38,8 @@ const Drawer = ({ onClose, colors, onSave }) => {
   };
 
   return (
-    <div className="drawerContainer">
-      <div className="container">
+    <main className="drawerContainer">
+      <main className="container">
         {/* top text and close icon */}
         <div className="flexRow">
           {/* text */}
@@ -52,9 +52,9 @@ const Drawer = ({ onClose, colors, onSave }) => {
         </div>
 
         {/* title and subtitle inputs */}
-        <div>
+        <section>
           {/* title input */}
-          <div>
+          <section>
             <h3>title</h3>
 
             <div>
@@ -66,10 +66,10 @@ const Drawer = ({ onClose, colors, onSave }) => {
                 onChange={handleTitleChange}
               />
             </div>
-          </div>
+          </section>
 
           {/* subtitle input */}
-          <div>
+          <section>
             <h3>subtitle</h3>
 
             <div>
@@ -81,11 +81,11 @@ const Drawer = ({ onClose, colors, onSave }) => {
                 onChange={handleSubtitleChange}
               />
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
 
         {/* color section */}
-        <div>
+        <section>
           {/* text */}
           <h3>background color</h3>
 
@@ -102,7 +102,7 @@ const Drawer = ({ onClose, colors, onSave }) => {
               />
             ))}
           </div>
-        </div>
+        </section>
 
         {/* done button */}
         <div>
@@ -114,8 +114,8 @@ const Drawer = ({ onClose, colors, onSave }) => {
             Done
           </button>
         </div>
-      </div>
-    </div>
+      </main>
+    </main>
   );
 };
 
