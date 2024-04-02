@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./MainPage.css";
 import Drawer from "../Drawer/Drawer";
+import "./MainPage.css";
 
 const MainPage = () => {
   const [colors, setColors] = useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // api call for colors data
   useEffect(() => {
@@ -23,18 +24,23 @@ const MainPage = () => {
     fetchData();
   }, []);
 
+  // handle button click and toggle drawer visibility
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <>
       <div className="mainContainer">
         {/* filter by text */}
-        <h4 className="filterText">Filter By</h4>
+        <h1>Filter By</h1>
 
         {/* color and title / subtitle input */}
         <div className="flexDisplay">
           {/* color */}
           <div>
             {/* text */}
-            <h5 className="colorText">color:</h5>
+            <h3>color</h3>
 
             {/* color display */}
             <div className="colorDisplay">
@@ -51,7 +57,7 @@ const MainPage = () => {
           {/* title / subtitle input */}
           <div>
             {/* text */}
-            <h5 className="colorText">title / subtitle:</h5>
+            <h3>title / subtitle:</h3>
 
             {/* input */}
             <div>
@@ -64,21 +70,30 @@ const MainPage = () => {
           </div>
         </div>
 
-        {/* creatives process bar */}
+        {/* process bar */}
         <div className="processContainer">
           {/* process bar */}
           <div className="processBar" />
 
           {/* process text */}
           <div>
-            <h5 className="processText">0 / 5 Creatives</h5>
+            <h3>0 / 5 Creatives</h3>
           </div>
         </div>
 
         {/* add creative button */}
         <div>
-          <button className="addButton">+ Add Creative</button>
+          <button
+            className="addButton"
+            onClick={toggleDrawer}
+            disabled={isDrawerOpen}
+          >
+            + Add Creative
+          </button>
         </div>
+
+        {/* render drawer component conditionally */}
+        {isDrawerOpen && <Drawer onClose={toggleDrawer} colors={colors} />}
       </div>
     </>
   );

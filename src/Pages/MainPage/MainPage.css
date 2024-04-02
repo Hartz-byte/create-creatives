@@ -3,19 +3,9 @@
   margin-left: 30px;
 }
 
-.filterText {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
 .flexDisplay {
   display: flex;
   gap: 100px;
-}
-
-.colorText {
-  font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .colorDisplay {
@@ -55,10 +45,6 @@
   border: 2px solid black;
 }
 
-.processText {
-  margin-bottom: 20px;
-}
-
 .addButton {
   margin-top: 30px;
   background-color: white;
@@ -70,4 +56,12 @@
 
 .addButton:hover {
   background-color: #f0f0f0;
+}
+
+.addButton:disabled {
+  border-color: #ccc;
+}
+
+.addButton:disabled:hover {
+  background-color: white;
 }
