@@ -41,9 +41,10 @@
   padding: 5px;
 }
 
-.process {
+.processContainer {
   margin-top: 70px;
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -55,7 +56,7 @@
 }
 
 .processText {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .addButton {

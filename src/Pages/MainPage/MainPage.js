@@ -65,7 +65,7 @@ const MainPage = () => {
         </div>
 
         {/* creatives process bar */}
-        <div className="process">
+        <div className="processContainer">
           {/* process bar */}
           <div className="processBar" />
 
