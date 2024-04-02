@@ -39,13 +39,6 @@
   gap: 20px;
 }
 
-.processBar {
-  width: 560px;
-  height: 20px;
-  border-radius: 10px;
-  border: 2px solid black;
-}
-
 .addButton {
   margin-top: 30px;
   background-color: white;
@@ -90,4 +83,18 @@
 .creativeItem h5 {
   margin: 0;
   font-size: 14px;
+}
+
+.processBarContainer {
+  width: 560px;
+  height: 20px;
+  border-radius: 10px;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+.processBarFill {
+  height: 100%;
+  background-color: black;
+  transition: width 0.5s ease-in-out;
 }

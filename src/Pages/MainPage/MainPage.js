@@ -30,11 +30,15 @@ const MainPage = () => {
 
   // function to create creatives
   const saveCreative = ({ title, subtitle, selectedColor }) => {
-    setCreatives((prevCreatives) => [
-      ...prevCreatives,
-      { title, subtitle, color: selectedColor },
-    ]);
+    if (creatives.length < 5) {
+      setCreatives((prevCreatives) => [
+        ...prevCreatives,
+        { title, subtitle, color: selectedColor },
+      ]);
+    }
   };
+
+  const barWidth = `${(creatives.length / 5) * 100}%`;
 
   return (
     <>
@@ -76,11 +80,18 @@ const MainPage = () => {
         {/* process bar */}
         <div className="processContainer">
           {/* bar */}
-          <div className="processBar" />
+          <div className="processBarContainer">
+            <div
+              className="processBarFill"
+              style={{
+                width: barWidth,
+              }}
+            />
+          </div>
 
           {/* count text */}
           <div>
-            <h3>0 / 5 Creatives</h3>
+            <h3>{creatives.length} / 5 Creatives</h3>
           </div>
         </div>
 
