@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Drawer.css";
 
 const Drawer = ({ onClose, colors }) => {
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  // Function to handle changes in title input
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  // Function to handle changes in subtitle input
+  const handleSubtitleChange = (event) => {
+    setSubtitle(event.target.value);
+  };
+
+  // Function to handle color selection
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
+
+  // Function to determine if all inputs are filled
+  const areInputsFilled = () => {
+    return (
+      title.trim() !== "" && subtitle.trim() !== "" && selectedColor !== null
+    );
+  };
+
   return (
     <div className="drawerContainer">
       <div className="container">
@@ -30,6 +56,8 @@ const Drawer = ({ onClose, colors }) => {
                 type="text"
                 placeholder="Enter title"
                 className="textField"
+                value={title}
+                onChange={handleTitleChange}
               />
             </div>
           </div>
@@ -44,6 +72,8 @@ const Drawer = ({ onClose, colors }) => {
                 type="text"
                 placeholder="Enter subtitle"
                 className="textField"
+                value={subtitle}
+                onChange={handleSubtitleChange}
               />
             </div>
           </div>
@@ -54,13 +84,16 @@ const Drawer = ({ onClose, colors }) => {
           {/* text */}
           <h3>background color</h3>
 
-          {/* display colors */}
+          {/* display color selection */}
           <div className="colorDisplay">
             {colors.map((color, index) => (
-              <div
+              <button
                 key={index}
-                className="colorCircle"
+                className={`colorCircle ${
+                  selectedColor === color ? "selected" : ""
+                }`}
                 style={{ backgroundColor: color }}
+                onClick={() => handleColorClick(color)}
               />
             ))}
           </div>
@@ -68,7 +101,13 @@ const Drawer = ({ onClose, colors }) => {
 
         {/* done button */}
         <div>
-          <button className="doneButton">Done</button>
+          <button
+            className="doneButton"
+            onClick={onClose}
+            disabled={!areInputsFilled()}
+          >
+            Done
+          </button>
         </div>
       </div>
     </div>

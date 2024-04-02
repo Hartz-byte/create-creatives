@@ -49,3 +49,16 @@
 .doneButton:hover {
   background-color: #f0f0f0;
 }
+
+.doneButton:disabled {
+  border-color: #ccc;
+}
+
+.doneButton:disabled:hover {
+  background-color: white;
+}
+
+.selected {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}

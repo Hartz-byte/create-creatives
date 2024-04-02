@@ -18,6 +18,7 @@
   height: 30px;
   border-radius: 50%;
   border: 2px solid black;
+  cursor: pointer;
 }
 
 .inputField {
@@ -39,7 +40,7 @@
 }
 
 .processBar {
-  width: 550px;
+  width: 560px;
   height: 20px;
   border-radius: 10px;
   border: 2px solid black;
