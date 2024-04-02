@@ -38,8 +38,6 @@ const MainPage = () => {
     }
   };
 
-  const barWidth = `${(creatives.length / 5) * 100}%`;
-
   return (
     <>
       <div className="mainContainer">
@@ -84,7 +82,7 @@ const MainPage = () => {
             <div
               className="processBarFill"
               style={{
-                width: barWidth,
+                width: `${(creatives.length / 5) * 100}%`,
               }}
             />
           </div>
@@ -122,8 +120,8 @@ const MainPage = () => {
             className="creativeItem"
             style={{ backgroundColor: creative.color }}
           >
-            <h3>{creative.title}</h3>
-            <h5>{creative.subtitle}</h5>
+            <h1>{creative.title}</h1>
+            <h3>{creative.subtitle}</h3>
           </div>
         ))}
       </div>

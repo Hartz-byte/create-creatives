@@ -41,6 +41,7 @@
 
 .addButton {
   margin-top: 30px;
+  margin-bottom: 30px;
   background-color: white;
   font-weight: 600;
   border: 2px solid black;
@@ -62,27 +63,25 @@
 
 .creativeItem {
   margin-top: 20px;
-  width: 300px;
-  height: 50px;
+  width: 560px;
+  height: 150px;
   margin-right: 20px;
   margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.creativeItem h3 {
+.creativeItem h1 {
   margin: 0;
-  font-size: 18px;
-  font-weight: bold;
+  padding-left: 40px;
 }
 
-.creativeItem h5 {
+.creativeItem h3 {
   margin: 0;
-  font-size: 14px;
+  padding-left: 40px;
 }
 
 .processBarContainer {
