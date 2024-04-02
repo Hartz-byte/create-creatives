@@ -1,33 +1,40 @@
-import React, { useState, useEffect } from "react";
+// Drawer.js
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Drawer.css";
 
-const Drawer = ({ onClose, colors }) => {
+const Drawer = ({ onClose, colors, onSave }) => {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
 
-  // Function to handle changes in title input
+  // title change handle
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
-  // Function to handle changes in subtitle input
+  // subtitle change handle
   const handleSubtitleChange = (event) => {
     setSubtitle(event.target.value);
   };
 
-  // Function to handle color selection
+  // color change handle
   const handleColorClick = (color) => {
     setSelectedColor(color);
   };
 
-  // Function to determine if all inputs are filled
+  // checking if the inputs and color selection are empty or not
   const areInputsFilled = () => {
     return (
       title.trim() !== "" && subtitle.trim() !== "" && selectedColor !== null
     );
+  };
+
+  // save inputs and color data
+  const handleSave = () => {
+    onSave({ title, subtitle, selectedColor });
+    onClose();
   };
 
   return (
@@ -35,7 +42,7 @@ const Drawer = ({ onClose, colors }) => {
       <div className="container">
         {/* top text and close icon */}
         <div className="flexRow">
-          {/* top text */}
+          {/* text */}
           <h1>Creative Creation</h1>
 
           {/* close icon */}
@@ -44,13 +51,12 @@ const Drawer = ({ onClose, colors }) => {
           </div>
         </div>
 
-        {/* input areas */}
+        {/* title and subtitle inputs */}
         <div>
-          {/* title */}
+          {/* title input */}
           <div>
             <h3>title</h3>
 
-            {/* input */}
             <div>
               <input
                 type="text"
@@ -62,11 +68,10 @@ const Drawer = ({ onClose, colors }) => {
             </div>
           </div>
 
-          {/* subtitle */}
+          {/* subtitle input */}
           <div>
             <h3>subtitle</h3>
 
-            {/* input */}
             <div>
               <input
                 type="text"
@@ -79,12 +84,12 @@ const Drawer = ({ onClose, colors }) => {
           </div>
         </div>
 
-        {/* color */}
+        {/* color section */}
         <div>
           {/* text */}
           <h3>background color</h3>
 
-          {/* display color selection */}
+          {/* color display button */}
           <div className="colorDisplay">
             {colors.map((color, index) => (
               <button
@@ -103,7 +108,7 @@ const Drawer = ({ onClose, colors }) => {
         <div>
           <button
             className="doneButton"
-            onClick={onClose}
+            onClick={handleSave}
             disabled={!areInputsFilled()}
           >
             Done

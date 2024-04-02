@@ -6,27 +6,34 @@ import "./MainPage.css";
 const MainPage = () => {
   const [colors, setColors] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [creatives, setCreatives] = useState([]);
 
-  // api call for colors data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "https://random-flat-colors.vercel.app/api/random?count=5"
         );
-        // console.log(response.data.colors);
         setColors(response.data.colors);
       } catch (error) {
-        console.error("Error fetching the api:", error);
+        console.error("Error fetching the API:", error);
       }
     };
 
     fetchData();
   }, []);
 
-  // handle button click and toggle drawer visibility
+  // function to toggle drawer component
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  // function to create creatives
+  const saveCreative = ({ title, subtitle, selectedColor }) => {
+    setCreatives((prevCreatives) => [
+      ...prevCreatives,
+      { title, subtitle, color: selectedColor },
+    ]);
   };
 
   return (
@@ -35,14 +42,12 @@ const MainPage = () => {
         {/* filter by text */}
         <h1>Filter By</h1>
 
-        {/* color and title / subtitle input */}
+        {/* color and title/subtitle section */}
         <div className="flexDisplay">
-          {/* color */}
+          {/* color section */}
           <div>
-            {/* text */}
             <h3>color</h3>
 
-            {/* color display */}
             <div className="colorDisplay">
               {colors.map((color, index) => (
                 <div
@@ -54,12 +59,10 @@ const MainPage = () => {
             </div>
           </div>
 
-          {/* title / subtitle input */}
+          {/* title / subtitle section */}
           <div>
-            {/* text */}
             <h3>title / subtitle:</h3>
 
-            {/* input */}
             <div>
               <input
                 type="text"
@@ -72,16 +75,16 @@ const MainPage = () => {
 
         {/* process bar */}
         <div className="processContainer">
-          {/* process bar */}
+          {/* bar */}
           <div className="processBar" />
 
-          {/* process text */}
+          {/* count text */}
           <div>
             <h3>0 / 5 Creatives</h3>
           </div>
         </div>
 
-        {/* add creative button */}
+        {/* + add creative button  */}
         <div>
           <button
             className="addButton"
@@ -92,8 +95,26 @@ const MainPage = () => {
           </button>
         </div>
 
-        {/* render drawer component conditionally */}
-        {isDrawerOpen && <Drawer onClose={toggleDrawer} colors={colors} />}
+        {/* conditional drawer open close */}
+        {isDrawerOpen && (
+          <Drawer
+            onClose={toggleDrawer}
+            colors={colors}
+            onSave={saveCreative}
+          />
+        )}
+
+        {/* creatives */}
+        {creatives.map((creative, index) => (
+          <div
+            key={index}
+            className="creativeItem"
+            style={{ backgroundColor: creative.color }}
+          >
+            <h3>{creative.title}</h3>
+            <h5>{creative.subtitle}</h5>
+          </div>
+        ))}
       </div>
     </>
   );
