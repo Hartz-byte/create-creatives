@@ -1,0 +1,25 @@
+.mainContainer {
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+.filter-text {
+  font-size: 30px;
+}
+
+.color-text {
+  font-size: 20px;
+}
+
+.colorDisplay {
+  display: flex;
+  gap: 20px;
+  width: 260px;
+}
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
